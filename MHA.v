@@ -7,6 +7,17 @@
 // @DFKI
 //======================================================================
 
+/*
+
+Input (of the block)= Output (of the block) = [n X d_model]; n = #tokens+1, d_model= 192, 384, 768, 1024, ...
+Wq = Wk = Wv = [d_model X d_H]
+Q = K = V = [n X d_H]
+Wo = [d_model X d_model]
+Output (of each head) = [n X d_H]; d_H = d_model/#heads
+
+
+*/
+
 module MHA #(
 					parameter parameter_name = 8;
 			)
@@ -17,10 +28,10 @@ module MHA #(
 
                    // Control.
                    input logic            init,
-				   output logic			  ready,
+				           output logic			      ready,
 
                    // Data ports.
-				   input logic	[parameter_name-1 : 0]	input_block,		 
+				           input logic	[parameter_name-1 : 0]	input_block,		 
                    output logic [parameter_name-1 : 0]  output_block,	
                   );
 

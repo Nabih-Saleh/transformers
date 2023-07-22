@@ -7,6 +7,13 @@
 // @DFKI
 //======================================================================
 
+/*
+
+Input (of the block)= Output (of the block) = [n X d_model]; n = #tokens+1, d_model= 192, 384, 512, 768, 1024, ...
+Hidden units = [d_model * 4]
+
+
+*/
 module MLP(
 					parameter parameter_name = 8;
 			)
@@ -17,10 +24,10 @@ module MLP(
 
                    // Control.
                    input logic            init,
-				   output logic			  ready,
+				           output logic			      ready,
 
                    // Data ports.
-				   input logic	[parameter_name-1 : 0]	input_block,		 
+				           input logic	[parameter_name-1 : 0]	input_block,		 
                    output logic [parameter_name-1 : 0]  output_block,	
                   );
 

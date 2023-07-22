@@ -7,6 +7,15 @@
 // @DFKI
 //======================================================================
 
+/*
+
+Input = Output = [n X d_model]; n = #tokens+1, d_model= 192, 384, 768, 1024, ...
+
+
+
+*/
+
+
 module Encoder #(
 					parameter parameter_name = 8;
 			)
