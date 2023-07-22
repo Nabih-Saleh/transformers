@@ -16,6 +16,19 @@ Wo = [d_model X d_model]
 Output (of each head) = [n X d_H]; d_H = d_model/#heads
 
 
+Processes:
+1- projection:
+      input[n X d_model]
+      output: Q,K,V
+2- Compatibility matrix:
+      input: Q,K
+      output: Z[n X n]
+3- Softmax+:
+      input: Z,V
+      output(attention weight): W[n X d_H]     
+
+
+
 */
 
 module MHA #(

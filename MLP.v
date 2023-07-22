@@ -12,6 +12,14 @@
 Input (of the block)= Output (of the block) = [n X d_model]; n = #tokens+1, d_model= 192, 384, 512, 768, 1024, ...
 Hidden units = [d_model * 4]
 
+Processes:
+1- 1st Linear layer(projection):
+      Y1= W1 * X + b1
+2- Activation(ReLU/GeLU):
+      A = ReLU(Y1)
+3- 2nd Linear layer(projection):
+      Y2= A * W2 + b2            
+
 
 */
 module MLP(

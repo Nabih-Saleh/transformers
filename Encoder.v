@@ -11,7 +11,10 @@
 
 Input = Output = [n X d_model]; n = #tokens+1, d_model= 192, 384, 768, 1024, ...
 
-
+Processes:
+1- MHA
+2- Concat
+3- MLP
 
 */
 
