@@ -20,20 +20,20 @@ Processes:
 
 
 module Encoder #(
-					parameter parameter_name = 8;
-			)
+		parameter int WIDTH = 32 // Bit width of the input and output signals;
+)
 			(
                    // Clock and reset.
-                   input logic            clk,
-                   input logic            reset_n,
+            input logic             clk,
+            input logic             reset_n,
 
                    // Control.
-                   input logic            init,
-				   output logic			  ready,
+            input logic             init,
+			output logic		    ready,
 
                    // Data ports.
-				   input logic	[parameter_name-1 : 0]	input_block,		 
-                   output logic [parameter_name-1 : 0]  output_block,	
+			input logic  [WIDTH-1 : 0]	    input_block,		 
+            output logic [WIDTH-1 : 0]     output_block
                   );
 
 
@@ -48,15 +48,15 @@ module Encoder #(
   //----------------------------------------------------------------
   // Module instantiantions.
   //----------------------------------------------------------------
-  MHA MHA_inst(
+  MHA #(INPUT_SIZE) MHA_inst(
 				.input_block(),
 				.output_block()
 				);
 				
   				
-  MLP MLP_inst(
-				.inputPortName(),
-				.outputPortName()
+  MLP #(INPUT_SIZE) MLP_inst(
+				.input_block(),
+				.output_block()
 				);
  
  

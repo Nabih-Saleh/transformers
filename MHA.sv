@@ -25,27 +25,30 @@ Processes:
       output: Z[n X n]
 3- Softmax+:
       input: Z,V
-      output(attention weight): W[n X d_H]     
+      output(attention weight): W[n X d_H]
+4- Self-Attention:
+      input: V,W
+      output: H[n, d_H]     
 
 
 
 */
 
 module MHA #(
-					parameter parameter_name = 8;
-			)
+		parameter int WIDTH = 32 // Bit width of the input and output signals
+)
 			(
                    // Clock and reset.
-                   input logic            clk,
-                   input logic            reset_n,
+                  input logic            clk,
+                  input logic            reset_n,
 
                    // Control.
-                   input logic            init,
-				           output logic			      ready,
+                  input logic            init,
+			output logic		ready,
 
                    // Data ports.
-				           input logic	[parameter_name-1 : 0]	input_block,		 
-                   output logic [parameter_name-1 : 0]  output_block,	
+			input logic  [WIDTH-1 : 0]	input_block,		 
+                  output logic [WIDTH-1 : 0]     output_block
                   );
 
 
